@@ -1,0 +1,29 @@
+{
+    "name": "pinkcrab/##YOUR PLUGIN NAME##",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-only",
+    "description": "##YOUR PLUGIN DESC##",
+    "authors": [{
+        "name": "Glynn Queclh",
+        "email": "glynn.quelch@gmail.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "PinkCrab\\Core\\": "core/",
+            "PinkCrab\\WP\\": "wp/",
+            "PinkCrab\\Modules\\": "Modules/",
+            "PinkCrab\\Sandbox_Test_Bed\\": "src/",
+            "PC_Vendor\\": "pc_vendor/"
+        },
+        "files": [
+            "pc_vendor/GuzzleHttp/Guzzle/functions_include.php",
+            "pc_vendor/GuzzleHttp/Psr7/functions_include.php",
+            "pc_vendor/GuzzleHttp/Promise/functions_include.php"
+        ]
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.0",
+        "phpstan/phpstan": "^0.11.10",
+        "szepeviktor/phpstan-wordpress": "^0.2.1"
+    }
+}

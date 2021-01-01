@@ -1,0 +1,9 @@
+[submodule "core"]
+	path = core
+	url = https://github.com/Pink-Crab/pc_core
+[submodule "pc_vendor"]
+	path = pc_vendor
+	url = https://github.com/Pink-Crab/pc_vendor.git
+[submodule "Module_Manager"]
+	path = Module_Manager
+	url = https://github.com/Pink-Crab/Module_Manager.git

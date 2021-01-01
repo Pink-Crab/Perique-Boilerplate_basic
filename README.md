@@ -8,7 +8,7 @@ Before using this boilerplate dont forget to change the values in both plugin.ph
 Once they are both setup you can run the following.
 
 ````
-git submodule update --recursive --remote
+git submodule update --init --recursive --remote
 ````
 
 Then install composer (you can add more packages etc first)

@@ -1,5 +1,5 @@
 {
-    "name": "pinkcrab/test",
+    "name": "pinkcrab/##YOUR PLUGIN NAME##",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-only",
     "description": "##YOUR PLUGIN DESC##",

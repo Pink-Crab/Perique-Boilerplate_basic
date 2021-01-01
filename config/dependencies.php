@@ -11,7 +11,6 @@ declare(strict_types=1);
  * @since 0.1.0
  */
 
-use wpdb;
 use PinkCrab\Core\Application\App;
 use PinkCrab\Core\Interfaces\Renderable;
 use PinkCrab\Core\Services\View\PHP_Engine;

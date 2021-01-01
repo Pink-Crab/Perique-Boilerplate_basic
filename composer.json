@@ -12,7 +12,7 @@
             "PinkCrab\\Core\\": "core/",
             "PinkCrab\\WP\\": "wp/",
             "PinkCrab\\Modules\\": "Modules/",
-            "PinkCrab\\Sandbox_Test_Bed\\": "src/",
+            "##YOUR NAMESPACE##\\": "src/",
             "PC_Vendor\\": "pc_vendor/"
         },
         "files": [

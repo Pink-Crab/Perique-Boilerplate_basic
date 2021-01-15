@@ -1,0 +1,4 @@
+vendor
+wordpress
+composer.lock
+tests/wp-config.php

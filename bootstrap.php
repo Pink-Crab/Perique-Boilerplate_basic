@@ -17,20 +17,16 @@ use PinkCrab\Core\Services\Registration\Loader;
 use PinkCrab\Core\Services\ServiceContainer\Container;
 use PinkCrab\Core\Services\Registration\Register_Loader;
 
-// App setup
-try {
-	// Load config with settings.
-	$settings = include 'config/settings.php';
-	$config   = new App_Config( $settings ); // Change if using custom path for config.
+// Populate Config with settings, if file exists.
+$settings = file_exists( 'config/settings.php' )
+	? require 'config/settings.php'
+	: array();
+$config   = new App_Config( $settings );
 
-	// Load hook loader, DI & container.
-	$loader    = Loader::boot();
-	$di        = WP_Dice::constructWith( new Dice() );
-	$container = new Container();
-
-} catch ( \Throwable $th ) {
-	throw new ErrorException( 'Failed to initalise PinkCrab Application : ' . $th->getMessage() );
-}
+// Load hook loader, DI & container.
+$loader    = Loader::boot();
+$di        = WP_Dice::constructWith( new Dice() );
+$container = new Container();
 
 // Setup the service container .
 $container->set( 'di', $di );
@@ -44,20 +40,19 @@ add_action(
 	'init',
 	function () use ( $loader, $app, $config ) {
 
-		$dependencies  = include 'config/dependencies.php';
-		$registerables = include 'config/registration.php';
+		// If the dependencies file exists, add rules.
+		if ( file_exists( 'config/dependencies.php' ) ) {
+			$dependencies = include 'config/dependencies.php';
+			$app->get( 'di' )->addRules( $dependencies );
+		}
 
-		// Add all DI rules.
-		$app->get( 'di' )->addRules( apply_filters( 'PinkCrab\\di_rules', $dependencies ) );
+		// Add all registerable objects to loader, if file exists.
+		if ( file_exists( 'config/registration.php' ) ) {
+			$registerables = include 'config/registration.php';
+			Register_Loader::initalise( $app, $registerables, $loader );
+		}
 
 		// Initalise all registerable classes.
-		Register_Loader::initalise(
-			$app,
-			apply_filters( 'PinkCrab\\registration_rules', $registerables ), // Change if using custom path for config.
-			$loader
-		);
-
-		// Register Loader hooks.
 		$loader->register_hooks();
 	},
 	1

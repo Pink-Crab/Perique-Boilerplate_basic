@@ -16,7 +16,6 @@
 use PinkCrab\WP\Activation;
 use PinkCrab\WP\Deactivation;
 use PinkCrab\Core\Application\App;
-use PinkCrab\Core\Interfaces\Renderable;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die;

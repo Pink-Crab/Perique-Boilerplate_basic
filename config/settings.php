@@ -10,6 +10,10 @@ declare(strict_types=1);
  * @since 0.1.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
+
 // Get the path of the plugin base.
 $base_path  = \dirname( __DIR__, 1 );
 $plugin_dir = \basename( $base_path );

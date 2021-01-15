@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @since 1.0.0
  */
 
-use ErrorException;
 use PinkCrab\Core\Application\App;
 use PinkCrab\Core\Services\Dice\Dice;
 use PinkCrab\Core\Services\Dice\WP_Dice;

@@ -13,7 +13,8 @@
     }],
     "autoload": {
         "psr-4": {
-            "PinkCrab\\##NAMESPACE##\\": "src"
+            "PinkCrab\\##NAMESPACE##\\": "src",
+            "PinkCrab\\WP\\": "wp"
         },
         "files": []
     },
@@ -34,9 +35,8 @@
         "symfony/var-dumper": "^5.0",
         "phpstan/phpstan": "^0.12.6",
         "szepeviktor/phpstan-wordpress": "^0.7.2",
-        "php-stubs/wordpress-stubs": "^5.6.0",
-        "pinkcrab/phpunit-helpers": "dev-master",
-        "phpunit/phpunit-dom-assertions": "~2"
+        "php-stubs/wordpress-stubs": "^5.5.0",
+        "pinkcrab/phpunit-helpers": "dev-master"
     },
     "require": {
         "php": ">=7.1.0",

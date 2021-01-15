@@ -16,12 +16,18 @@ use PinkCrab\Core\Services\View\PHP_Engine;
 
 return array(
 	// Gloabl Rules
-	'*' => array(
+	'*'               => array(
 		'substitutions' => array(
-			App::class        => App::get_instance(),
+			App::class => App::get_instance(),
 			Renderable::class => PHP_Engine::class,
-			wpdb::class       => new wpdb( \DB_USER, \DB_PASSWORD, \DB_NAME, \DB_HOST ),
 		),
 	),
-	/** ADD YOUR CUSTOM RULES HERE */
+	
+    // Use wpdb as an injectable object.
+	wpdb::class       => array(
+		'shared'          => true,
+		'constructParams' => array( \DB_USER, \DB_PASSWORD, \DB_NAME, \DB_HOST ),
+	),
+	
+    /** ADD YOUR CUSTOM RULES HERE */
 );

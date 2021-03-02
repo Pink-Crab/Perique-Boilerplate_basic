@@ -87,15 +87,14 @@ return array(
 ```
 You can also add in your extra functions/classes/traits/interfaces/constants to the *patchers* list.
 ```php
-'patchers'                   => array(
+'patchers' => array(
     function ( $filePath, $prefix, $contents ) use ( $patcherProvider ) {
         ....
         // Add in any additional symbols to not prefix.
         $contents = str_replace( "\\$prefix\\my_global_function", '\\my_global_function', $contents );
-
         return $contents;
-                },
-    ),
+    },
+),
 ```
 
 ### build.sh

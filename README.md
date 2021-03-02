@@ -69,7 +69,7 @@ You will need to set your prefix for all namespaces in here, you can add in cust
 ```php
 return array(
 // Set your namespace prefix here
-'prefix' => 'PcLocations_001',
+    'prefix' => 'PcLocations_001',
     .....
 );
 ```
@@ -88,14 +88,15 @@ return array(
 You can also add in your extra functions/classes/traits/interfaces/constants to the *patchers* list.
 ```php
 'patchers'                   => array(
-	function ( $filePath, $prefix, $contents ) use ( $patcherProvider ) {
-			....
-			// Add in any additional symbols to not prefix.
-			$contents = str_replace( "\\$prefix\\my_global_function", '\\my_global_function', $contents );
+    function ( $filePath, $prefix, $contents ) use ( $patcherProvider ) {
+        ....
+        // Add in any additional symbols to not prefix.
+        $contents = str_replace( "\\$prefix\\my_global_function", '\\my_global_function', $contents );
 
-			return $contents;
-		},
-	),
+        return $contents;
+                },
+    ),
+```
 
 ### build.sh
 This is the main bash file used to create your build, the autoloader-suffix above will need to be changed inside the build.sh file. You will reference to it twice, just update both.

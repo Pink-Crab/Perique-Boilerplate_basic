@@ -1,4 +1,5 @@
-vendor
-wordpress
-composer.lock
-tests/wp-config.php
+/vendor
+/wordpress
+/build-tools/patchers/*
+coverage.xml
+/coverage-report

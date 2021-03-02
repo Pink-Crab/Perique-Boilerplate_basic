@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @since ##PLUGIN_VERSION##
  */
 
-// namespace ##NAMESPACE_WP##;
+namespace ##NAMESPACE_WP##;
 
 class Uninstalled {
 

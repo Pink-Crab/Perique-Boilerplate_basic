@@ -13,7 +13,4 @@
 
 namespace ##SCOPER_PREFIX##; 
 
-function esc_attr() {
-	return \esc_attr( ...func_get_args() );
-}
 

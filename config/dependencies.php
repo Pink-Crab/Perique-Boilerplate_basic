@@ -10,28 +10,24 @@ declare(strict_types=1);
  * @since 0.1.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
+/** REPLACE ALL THESE WITH YOUR ESCAPED NAMSPACES */
+// use PinkCrab\Core\Application\App_Config;
+// use PinkCrab\Core\Application\App;
+// use PinkCrab\Core\Interfaces\Renderable;
+// use PinkCrab\Core\Services\View\PHP_Engine;
 
-use PinkCrab\Core\Application\App;
-use PinkCrab\Core\Interfaces\Renderable;
-use PinkCrab\Core\Services\View\PHP_Engine;
+// Gets the apps config array.
+$config = App::retreive( 'config' );
 
 return array(
 	// Gloabl Rules
-	'*'         => array(
+	'*'               => array(
 		'substitutions' => array(
 			App::class        => App::get_instance(),
-			Renderable::class => PHP_Engine::class,
+			Renderable::class => new PHP_Engine( $config->path( 'view' ) ),
+			wpdb::class       => $GLOBALS['wpdb'],
+			App_Config::class => $config,
 		),
 	),
-
-	// Use wpdb as an injectable object.
-	wpdb::class => array(
-		'shared'          => true,
-		'constructParams' => array( \DB_USER, \DB_PASSWORD, \DB_NAME, \DB_HOST ),
-	),
-
 	/** ADD YOUR CUSTOM RULES HERE */
 );

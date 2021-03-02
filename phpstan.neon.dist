@@ -12,3 +12,4 @@ parameters:
         - %currentWorkingDirectory%/tests/*
     bootstrapFiles:
         - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+        - %currentWorkingDirectory%/build/vendor/autoload.php

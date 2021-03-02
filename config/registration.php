@@ -10,10 +10,6 @@ declare(strict_types=1);
  * @since 0.1.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
-
 return array(
 	/** Include all your classes which implemenet Registerable here */
 );

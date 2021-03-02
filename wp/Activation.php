@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace PinkCrab\WP;
 
-use PinkCrab\WP\Uninstalled;
-use PinkCrab\Core\Application\App;
+// use PinkCrab\WP\Uninstalled;
+// use PinkCrab\Core\Application\App;
 
 class Activation {
 

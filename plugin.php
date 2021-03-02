@@ -15,12 +15,9 @@
 
 use PinkCrab\WP\Activation;
 use PinkCrab\WP\Deactivation;
-use PinkCrab\Core\Application\App;
+// use PinkCrab\Core\Applcation\App; // <--- replace this with the new scoped name
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
-
+require_once __DIR__ . '/function_pollyfills.php';
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/bootstrap.php';
 

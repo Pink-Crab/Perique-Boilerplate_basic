@@ -1,5 +1,5 @@
 /vendor
 /wordpress
-/build-tools/patchers/*
+/build-tools/patchers/*.do
 coverage.xml
 /coverage-report

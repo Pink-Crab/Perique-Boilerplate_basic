@@ -13,12 +13,12 @@
  * Text Domain:     ##TEXT DOMAIN##
  */
 
-use PinkCrab\WP\Activation;
-use PinkCrab\WP\Deactivation;
+// use PinkCrab\WP\Activation; // <-- Repalce these to match your namespace for 'wp' in composer.json
+// use PinkCrab\WP\Deactivation;
 // use PinkCrab\Core\Applcation\App; // <--- replace this with the new scoped name
 
 require_once __DIR__ . '/function_pollyfills.php';
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/build/vendor/autoload.php';
 require_once __DIR__ . '/bootstrap.php';
 
 // Include activate and deactivate hooks (can be removed if not using the hooks).

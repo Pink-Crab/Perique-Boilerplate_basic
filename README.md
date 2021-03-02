@@ -18,9 +18,9 @@ use Ache_Plugin_B345_F\PinkCrab\Core\Application\App;
 
 You can also choose to have the View class accessible globally, by uncommenting out
 ```php
-	// Bind view to App
-	//$view = $app::make( View::class );
-	//$app->set( 'view', $view );
+// Bind view to App
+//$view = $app::make( View::class );
+//$app->set( 'view', $view );
 ```
 This will allow you to use ``` App::view()->render('template/path', ['key'=> 'value']) ``` anywhere in your code. While its nice and handly, passing View into a constructor is much cleaner.
 
@@ -68,8 +68,8 @@ This is the main settings file for the scoping process, you will a function call
 You will need to set your prefix for all namespaces in here, you can add in custom functions too. 
 ```php
 return array(
-	// Set your namespace prefix here
-	'prefix'                     => 'PcLocations_001',
+// Set your namespace prefix here
+'prefix' => 'PcLocations_001',
     .....
 );
 ```
@@ -77,11 +77,11 @@ You will also need to set all the namespaces for your plugin (as defined in whit
 ```php
 return array(
     .....
-	'whitelist'                  => array(
-		'PHPUnit\Framework\*',
-		'Composer\Autoload\ClassLoader',
-		'Your\Plugins\Code\*', <- Your namespaces here
-	),
+'whitelist' => array(
+	'PHPUnit\Framework\*',
+	'Composer\Autoload\ClassLoader',
+	'Your\Plugins\Code\*', <- Your namespaces here
+),
     .....
 );
 ```

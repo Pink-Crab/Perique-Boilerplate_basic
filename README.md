@@ -77,11 +77,11 @@ You will also need to set all the namespaces for your plugin (as defined in whit
 ```php
 return array(
     .....
-'whitelist' => array(
-	'PHPUnit\Framework\*',
-	'Composer\Autoload\ClassLoader',
-	'Your\Plugins\Code\*', <- Your namespaces here
-),
+    'whitelist' => array(
+        'PHPUnit\Framework\*',
+        'Composer\Autoload\ClassLoader',
+        'Your\Plugins\Code\*', <- Your namespaces here
+    ),
     .....
 );
 ```

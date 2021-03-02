@@ -10,8 +10,8 @@ declare(strict_types=1);
  * @since ##PLUGIN_VERSION##
  */
 
+use ##SCOPER_PREFIX##\Dice\Dice;
 use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App;
-use ##SCOPER_PREFIX##\PinkCrab\Core\Services\Dice\Dice;
 use ##SCOPER_PREFIX##\PinkCrab\Core\Services\Dice\WP_Dice;
 use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App_Config;
 use ##SCOPER_PREFIX##\PinkCrab\Core\Services\Registration\Loader;

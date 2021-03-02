@@ -15,7 +15,7 @@
 
 use ##NAMESPACE_WP##\Activation; 
 use ##NAMESPACE_WP##\Deactivation;
-use ##SCOPER_PREFIX##\PinkCrab\Core\Applcation\App; 
+use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App; 
 
 require_once __DIR__ . '/function_pollyfills.php';
 require_once __DIR__ . '/build/vendor/autoload.php';

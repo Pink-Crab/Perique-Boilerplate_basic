@@ -6,11 +6,12 @@
  *
  * This file should have the same namespace used in scoper.inc.php config.
  *
- * @since 0.3.1
- * @author Glynn Quelch <glynn.quelch@gmail.com>
+ * @package ##NAMESPACE##
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
-// namespace PcLocations_001; // <-- Replace with your namespace in scoper.inc.php
+namespace ##SCOPER_PREFIX##; 
 
 function esc_attr() {
 	return \esc_attr( ...func_get_args() );

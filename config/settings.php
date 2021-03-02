@@ -6,8 +6,8 @@ declare(strict_types=1);
  * Handles all general settings.
  *
  * @package PinkCrab\Framework
- * @author Glynn Quelch <glynn.quelch@gmail.com>
- * @since 0.1.0
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
 // Get the path of the plugin base.

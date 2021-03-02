@@ -31,7 +31,7 @@ $patcherProvider = function() {
 
 return array(
 	// Set your namespace prefix here
-	'prefix'                     => 'PcLocations_001',
+	'prefix'                     => '##SCOPER_PREFIX##',
 	'finders'                    => array(
 		Finder::create()
 			->files()
@@ -72,7 +72,8 @@ return array(
 	'whitelist'                  => array(
 		'PHPUnit\Framework\*',
 		'Composer\Autoload\ClassLoader',
-		'Your\Plugins\Code\*',
+		'##NAMESPACE##\*',
+		'##NAMESPACE_WP##\*',
 	),
 	'whitelist-global-constants' => true,
 	'whitelist-global-classes'   => true,

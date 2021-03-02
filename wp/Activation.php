@@ -5,15 +5,15 @@ declare(strict_types=1);
 /**
  * Actiation hook event.
  *
- * @author Glynn Quelch <glynn.quelch@gmail.com>
- * @license http://www.opensource.org/licenses/mit-license.html  MIT License
- * @package PinkCrab\WP
+ * @package ##NAMESPACE##
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
-namespace PinkCrab\WP;
+namespace ##NAMESPACE_WP##;
 
-// use PinkCrab\WP\Uninstalled;
-// use PinkCrab\Core\Application\App;
+use ##NAMESPACE_WP##\Uninstalled;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App;
 
 class Activation {
 

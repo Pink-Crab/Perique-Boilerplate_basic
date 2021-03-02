@@ -2,20 +2,20 @@
 
 /**
  * @wordpress-plugin
- * Plugin Name:     AVo_E_O
- * Plugin URI:      ##YOUR URL##
- * Description:     ##YOUR PLUGIN DESC##
- * Version:         ##VERSION##
- * Author:          ##AUTHOR##
- * Author URI:      ##YOUR URL##
+ * Plugin Name:     ##PLUGIN_NAME##
+ * Plugin URI:      ##PLUGIN_URL##
+ * Description:     ##PLUGIN_DESCRIPTION##
+ * Version:         ##PLUGIN_VERSION##
+ * Author:          ##AUTHOR_NAME##
+ * Author URI:      ##AUTHOR_URL##
  * License:         GPL-2.0+
  * License URI:     http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:     ##TEXT DOMAIN##
+ * Text Domain:     ##PLUGIN_TEXTDOMAIN##
  */
 
-// use PinkCrab\WP\Activation; // <-- Repalce these to match your namespace for 'wp' in composer.json
-// use PinkCrab\WP\Deactivation;
-// use PinkCrab\Core\Applcation\App; // <--- replace this with the new scoped name
+use ##NAMESPACE_WP##\Activation; 
+use ##NAMESPACE_WP##\Deactivation;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Applcation\App; 
 
 require_once __DIR__ . '/function_pollyfills.php';
 require_once __DIR__ . '/build/vendor/autoload.php';

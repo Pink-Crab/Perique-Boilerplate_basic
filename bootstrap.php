@@ -5,17 +5,18 @@ declare(strict_types=1);
 /**
  * Used to bootload the application.
  *
- * @author Glynn Quelch <glynn.quelch@gmail.com>
- * @since 1.0.0
+ * @package ##NAMESPACE##
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
-// use PinkCrab\Core\Application\App;
-// use PinkCrab\Core\Services\Dice\Dice;
-// use PinkCrab\Core\Services\Dice\WP_Dice;
-// use PinkCrab\Core\Application\App_Config;
-// use PinkCrab\Core\Services\Registration\Loader;
-// use PinkCrab\Core\Services\ServiceContainer\Container;
-// use PinkCrab\Core\Services\Registration\Register_Loader;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Services\Dice\Dice;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Services\Dice\WP_Dice;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App_Config;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Services\Registration\Loader;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Services\ServiceContainer\Container;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Services\Registration\Register_Loader;
 
 /** REPLACE THE ABOVE WITH YOUR NEW NAMESPACE AFTER RUNNING BUILD.SH */
 

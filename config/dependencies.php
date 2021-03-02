@@ -5,16 +5,15 @@ declare(strict_types=1);
 /**
  * Handles all depenedency injection rules and config.
  *
- * @package PinkCrab\PluginBoilerplate
- * @author Glynn Quelch <glynn.quelch@gmail.com>
- * @since 0.1.0
+ * @package ##NAMESPACE##
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
-/** REPLACE ALL THESE WITH YOUR ESCAPED NAMSPACES */
-// use PinkCrab\Core\Application\App_Config;
-// use PinkCrab\Core\Application\App;
-// use PinkCrab\Core\Interfaces\Renderable;
-// use PinkCrab\Core\Services\View\PHP_Engine;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Interfaces\Renderable;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App_Config;
+use ##SCOPER_PREFIX##\PinkCrab\Core\Services\View\PHP_Engine;
 
 // Gets the apps config array.
 $config = App::retreive( 'config' );

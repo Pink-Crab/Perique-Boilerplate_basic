@@ -1,26 +1,25 @@
 {
     "name": "##PACKAGE_NAME##",
     "type": "library",
-    "description": "##DESCRIPTION##",
+    "description": "##PLUGIN_DESCRIPTION##",
     "keywords": [],
-    "homepage": "https://pinkcrab.co.uk",
+    "homepage": "##PLUGIN_URL##",
     "license": "MIT",
     "authors": [{
-        "name": "Glynn Quelch",
-        "email": "glynn.quelch@pinkcrab.co.uk",
-        "homepage": "http://pinkcrab.co.uk",
-        "role": "Developer"
+        "name": "##AUTHOR_NAME##",
+        "email": "##AUTHOR_EMAIL##",
+        "homepage": "##AUTHOR_URL##"
     }],
     "autoload": {
         "psr-4": {
-            "PinkCrab\\##NAMESPACE##\\": "../src",
-            "PinkCrab\\WP\\##NAMESPACE##\\": "../wp"
+            "##NAMESPACE##\\": "../src",
+            "##NAMESPACE_WP##\\": "../wp"
         },
         "files": []
     },
     "autoload-dev": {
         "psr-4": {
-            "PinkCrab\\##NAMESPACE##\\Tests\\": "../tests"
+            "##NAMESPACE##\\Tests\\": "../tests"
         }
     },
     "repositories": [{
@@ -63,6 +62,6 @@
     "prefer-stable": true,
     "config": {
         "prepend-autoloader": true,
-        "autoloader-suffix": "pc_plugin_bp_dev"
+        "autoloader-suffix": "##DEV_AUTLOADER_PREFIX##"
     }
 }

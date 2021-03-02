@@ -12,6 +12,11 @@ $patcherProvider = function() {
 
 	$symbols = array();
 	foreach ( $stubFiles as $stub ) {
+
+		if ( $stub === '.gitkeep' ) {
+				continue;
+		}
+
 		try {
 			// Attempt to unserialize
 			$stubSymbols = unserialize( file_get_contents( $patcherDir . '/' . $stub ) );

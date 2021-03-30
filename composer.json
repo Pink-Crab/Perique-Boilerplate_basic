@@ -13,13 +13,13 @@
     }],
     "autoload": {
         "psr-4": {
-            "YOUR\\##NAMESPACE##\\": "../src"
+            "##NAMESPACE##\\": "src"
         },
         "files": []
     },
     "autoload-dev": {
         "psr-4": {
-            "YOUR\\##NAMESPACE##\\Tests\\": "../tests"
+            "##NAMESPACE##\\Tests\\": "tests"
         }
     },
     "require-dev": {
@@ -33,7 +33,6 @@
         "dealerdirect/phpcodesniffer-composer-installer": "*",
         "wp-coding-standards/wpcs": "*",
         "object-calisthenics/phpcs-calisthenics-rules": "*",
-        "pinkcrab/phpunit-helpers": "dev-master",
         "jetbrains/phpstorm-stubs": "dev-master",
         "kimhf/woocommerce-stubs": "^0.2.0",
         "kimhf/advanced-custom-fields-pro-stubs": "^5.9"

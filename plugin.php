@@ -3,13 +3,13 @@
  * @wordpress-plugin
  * Plugin Name:     ##PLUGIN NAME##
  * Plugin URI:      ##YOUR URL##
- * Description:     ##YOUR PLUGIN DESC##
+ * Description:     ##DESCRIPTION##
  * Version:         ##VERSION##
  * Author:          ##AUTHOR##
  * Author URI:      ##YOUR URL##
  * License:         GPL-2.0+
  * License URI:     http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:     ##TEXT DOMAIN##
+ * TextDomain:      ##TEXT DOMAIN##
  */
 
 require_once __DIR__ . '/build/vendor/autoload.php';

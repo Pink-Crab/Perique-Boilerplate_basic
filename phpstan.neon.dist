@@ -1,4 +1,4 @@
-# Start command: composer update --classmap-authoritative && vendor/bin/phpstan analyze
+# PinkCrab Plugin Boilerplate PHPStan config
 
 includes:
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
@@ -12,4 +12,6 @@ parameters:
         - %currentWorkingDirectory%/tests/*
     bootstrapFiles:
         - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+        - vendor/kimhf/woocommerce-stubs/woocommerce-stubs.php
+        - vendor/kimhf/advanced-custom-fields-pro-stubs/advanced-custom-fields-pro-stubs.php
         - %currentWorkingDirectory%/build/vendor/autoload.php

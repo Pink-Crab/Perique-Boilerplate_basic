@@ -1,4 +1,5 @@
-# PinkCrab Plugin Boilerplate #
+# PinkCrab Plugin Boilerplate *V0.4* #
+
 
 Welcome to the PinkCrab Plugin Boilerplate. The PinkCrab Plugin Framework give you all the basic tools needed to make a MVC style plugins for WordPress. Comes with a DI Container (DICE), custom Hook Loader and extendable registration process for interacting with WP apis.
 

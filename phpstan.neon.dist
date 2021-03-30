@@ -12,6 +12,5 @@ parameters:
         - %currentWorkingDirectory%/tests/*
     bootstrapFiles:
         - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
-        - vendor/kimhf/woocommerce-stubs/woocommerce-stubs.php
-        - vendor/kimhf/advanced-custom-fields-pro-stubs/advanced-custom-fields-pro-stubs.php
-        - %currentWorkingDirectory%/build/vendor/autoload.php
+        #- vendor/kimhf/woocommerce-stubs/woocommerce-stubs.php
+        #- vendor/kimhf/advanced-custom-fields-pro-stubs/advanced-custom-fields-pro-stubs.php

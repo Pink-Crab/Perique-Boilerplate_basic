@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * Holds all custom app config values.
- * See docs at https://app.gitbook.com/@glynn-quelch/s/pinkcrab/application/registration
+ * See docs at https://app.gitbook.com/@glynn-quelch/s/pinkcrab/application/app_config
  */
 
 // Base path and urls
@@ -14,6 +14,11 @@ $plugin_dir = \basename( $base_path );
 // Useful WP helpers
 $wp_uploads = \wp_upload_dir();
 global $wpdb;
+
+// Include the plugins file for access plugin details before init.
+if ( ! function_exists( 'get_plugin_data' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
 $plugin_data = get_plugin_data( $base_path . '/plugin.php' );
 
 return array(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @wordpress-plugin
  * Plugin Name:     ##PLUGIN NAME##
@@ -12,17 +13,12 @@
  * TextDomain:      ##TEXT DOMAIN##
  */
 
-require_once __DIR__ . '/build/vendor/autoload.php';
+use PinkCrab\Core\Application\App_Factory;
 
-( new App_Factory )->with_wp_dice( true )
-	->container_config(
-		function( DI_Container $container ): void {
-			// Pass an array of rules
-			$container->addRules( require __DIR__ . '/config/dependencies.php' );
-		}
-	)
+require_once __DIR__ . '/vendor/autoload.php';
+
+( new App_Factory() )->with_wp_dice( true )
+	->di_rules( require __DIR__ . '/config/dependencies.php' )
 	->app_config( require __DIR__ . '/config/settings.php' )
 	->registration_classses( require __DIR__ . '/config/registration.php' )
 	->boot();
-
-

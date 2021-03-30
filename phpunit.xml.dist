@@ -6,14 +6,25 @@
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
     convertWarningsToExceptions="true"
+    executionOrder="random"
     >
     <testsuites>
-        <testsuite name="settings_pages">
+        <testsuite name="plugin_boilerplate">
             <directory prefix="Test_" suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
 
+     <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/</directory>
+        </whitelist>
+    </filter>
+
     <php>
         <env name="WP_PHPUNIT__TESTS_CONFIG" value="tests/wp-config.php" />
     </php>
+
+    <logging>
+        <log type="coverage-clover" target="coverage-report/logs/clover.xml"/>
+    </logging>
 </phpunit>

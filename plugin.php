@@ -1,27 +1,28 @@
 <?php
-
 /**
  * @wordpress-plugin
- * Plugin Name:     AVo_E_O
+ * Plugin Name:     ##PLUGIN NAME##
  * Plugin URI:      ##YOUR URL##
- * Description:     ##YOUR PLUGIN DESC##
+ * Description:     ##DESCRIPTION##
  * Version:         ##VERSION##
  * Author:          ##AUTHOR##
  * Author URI:      ##YOUR URL##
  * License:         GPL-2.0+
  * License URI:     http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:     ##TEXT DOMAIN##
+ * TextDomain:      ##TEXT DOMAIN##
  */
 
-// use PinkCrab\WP\Activation; // <-- Repalce these to match your namespace for 'wp' in composer.json
-// use PinkCrab\WP\Deactivation;
-// use PinkCrab\Core\Applcation\App; // <--- replace this with the new scoped name
-
-require_once __DIR__ . '/function_pollyfills.php';
 require_once __DIR__ . '/build/vendor/autoload.php';
-require_once __DIR__ . '/bootstrap.php';
 
-// Include activate and deactivate hooks (can be removed if not using the hooks).
-register_activation_hook( __FILE__, array( App::make( Activation::class ), 'activate' ) );
-register_deactivation_hook( __FILE__, array( App::make( Deactivation::class ), 'deactivate' ) );
+( new App_Factory )->with_wp_dice( true )
+	->container_config(
+		function( DI_Container $container ): void {
+			// Pass an array of rules
+			$container->addRules( require __DIR__ . '/config/dependencies.php' );
+		}
+	)
+	->app_config( require __DIR__ . '/config/settings.php' )
+	->registration_classses( require __DIR__ . '/config/registration.php' )
+	->boot();
+
 

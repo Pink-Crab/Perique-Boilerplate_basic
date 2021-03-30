@@ -3,11 +3,8 @@
 declare(strict_types=1);
 
 /**
- * Holds all classes which are to be loaded on initalisation.
- *
- * @package PinkCrab\Framework
- * @author Glynn Quelch <glynn.quelch@gmail.com>
- * @since 0.1.0
+ * List of classes passed through the registaion service.
+ * See docs at https://app.gitbook.com/@glynn-quelch/s/pinkcrab/application/registration
  */
 
 return array(

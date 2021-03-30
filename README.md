@@ -41,9 +41,11 @@ Out of the box, this boilerplate comes with PHPUnit, PHPStan and PHPCS. All 3 ar
 
 * **composer test** This will run phpunit on its own, generating the coverage report and giving the testdox output
 * **composer coverage** This will run phpunit and generate a full HTML report of coverage in ```/coverage-report```
-* **composer analyse** This will run PHPStan at lv8 over all code in the src/ directory. Package includes WordPress Core, WooCommerce and ACF stubs
+* **composer analyse** This will run PHPStan at lv8 over all code in the src/ directory. Package includes WordPress Core, WooCommerce and ACF stubs*
 * **composer sniff** This run the the code found in /src through PHPCS using the ruleset defined in phpcs.xml
 * **composer all** This will composer test then composer analyse and finally composer sniff. 
+
+ * To use the WooCommerce and ACF stubs, please remvoe the # from ```phpstan.neon.dist``` 
 
 ## GitHub Actions
 

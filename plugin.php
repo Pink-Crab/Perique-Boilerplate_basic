@@ -13,15 +13,13 @@
  * Text Domain:     ##PLUGIN_TEXTDOMAIN##
  */
 
-use ##NAMESPACE_WP##\Activation; 
-use ##NAMESPACE_WP##\Deactivation;
-use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App; 
+use ##SCOPER_PREFIX##\PinkCrab\Core\Application\App_Factory;
 
 require_once __DIR__ . '/function_pollyfills.php';
 require_once __DIR__ . '/build/vendor/autoload.php';
-require_once __DIR__ . '/bootstrap.php';
 
-// Include activate and deactivate hooks (can be removed if not using the hooks).
-register_activation_hook( __FILE__, array( App::make( Activation::class ), 'activate' ) );
-register_deactivation_hook( __FILE__, array( App::make( Deactivation::class ), 'deactivate' ) );
-
+( new App_Factory() )->with_wp_dice( true )
+	->di_rules( require __DIR__ . '/config/dependencies.php' )
+	->app_config( require __DIR__ . '/config/settings.php' )
+	->registration_classses( require __DIR__ . '/config/registration.php' )
+	->boot();

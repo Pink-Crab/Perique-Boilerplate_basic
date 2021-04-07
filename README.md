@@ -1,32 +1,39 @@
-# PinkCrab Plugin Boilerplate #
+# PinkCrab Plugin Boilerplate || Seed Build 0.4.0 #
 
-Welcome to the PinkCrab Plugin Boilerplate. While this assumes you will be using the PinkCrab Plugin Framework to build your plugin, you can choose to just us this as a base for plugins with any composer libraries.
+[Built from release 0.4.0](https://github.com/Pink-Crab/Framework_Plugin_Boilerplate/releases/tag/0.4.0) of the BoilerPlate.
+
+> PLEASE ENSURE YOU READ THE FULL DOCUMENTATION BEFORE USING THIS BUILD
+
+Unlike the regular release version of this Plugin Boilerplate, the *Seed Build* is geared up for using **PHP-Scoper**. A basic WordPress configuration and custom patcher provider is included. This prevents the prefixing of WordPress (plus WooCommerce and ACF) functions/classes/constants within the scoped dependencies. Its not perfect sadly, but close enough to be easily workable.
 
 ## Setup
 
-Before you run build or composer install for the first time, you have a few things which need setting up.
+Before you can run the customer build process, you will need to replace all placeholders which are used throughout the plugins files. You should be able to use find and replace to do this pretty easily.
 
-### bootstrap.php
+**THESE ARE ALL REQUIRED**
 
-Your bootstrap file is the primary entrypoint for your plugin, this is mostly setup and ready to go. Although it does require you to set the **use** import statments at the top of the file. If you are planning to use PHP-Scoper (which we recommend), the classes will need to be imported with the correct namespace. If you set the namespace prefix to be **Ache_Plugin_B345_F**, you will need to add this to your namespaces
+| Placeholder      | Description |
+| ----------- | ----------- |
+| ##PLUGIN_NAME##      | The name of your plugin, used in plugin.php and composer.json    |
+| ##PLUGIN_URL##      | URL to the plugin website or repo*    |
+| ##PLUGIN_DESCRIPTION##      | The plugins description   |
+| ##PLUGIN_VERSION##      | The plugins current/initial version number   |
+| ##PLUGIN_TEXTDOMAIN##      | The plugins textdomain   |
+| ##AUTHOR_NAME##      | The plugin authors name   |
+| ##AUTHOR_URL##      | The plugin authors website*  |
+| ##AUTHOR_EMAIL##      | The plugin authors email*  |
+| ##NAMESPACE##      | The plugins namespapce (used in composer.json, so ensure you use **\\\\** )    |
+| ##SCOPER_PREFIX##      | The custom prefix used on all namespaces found in *vendor*.     |
+| ##PACKAGE_NAME##      | The package name used in composer.json (**achme/plugin-x**)    |
+| ##DEV_AUTLOADER_PREFIX##      | The custom autoloader prefix for dev dependencies (must be valid php namespace like **achme_plugin_x_dev** )   |
 
-```php
-use PinkCrab\Core\Application\App;
-// Becomes
-use Ache_Plugin_B345_F\PinkCrab\Core\Application\App;
-```
+***
 
-You can also choose to have the View class accessible globally, by uncommenting out
-```php
-// Bind view to App
-//$view = $app::make( View::class );
-//$app->set( 'view', $view );
-```
-This will allow you to use ``` App::view()->render('template/path', ['key'=> 'value']) ``` anywhere in your code. While its nice and handly, passing View into a constructor is much cleaner.
+> \* Composer validates email and urls, so ensure only valid email and url formats are used. 
 
 ### plugin.php
 
-Obviously this is our plugins entrypoint with WordPress. Like any plugin, you will need to fill out the doc block at the top for WordPress to parse and the use statement for App will need to be changed to match you scoped namespace.
+The app is bootstrapped from here and both the function_pollyfills.php and scoped vendors, autoloader are included. 
 
 ### function_pollyfills.php
 
@@ -39,8 +46,7 @@ This is mostly as you would expect, with the one cavet where if you are using ph
 ```json
 "autoload": {
     "psr-4": {
-        "PinkCrab\\My_Plugin\\": "src",
-        "PinkCrab\\WP\\My_Plugin\\": "wp"
+        "##NAMESPACE##": "src",
     },
     "files": []
 },
@@ -49,8 +55,7 @@ Becomes
 ```json
 "autoload": {
     "psr-4": {
-        "PinkCrab\\My_Plugin\\": "../src",
-        "PinkCrab\\WP\\My_Plugin\\": "../wp"
+        "##NAMESPACE##": "../src",
     },
     "files": []
 },
@@ -59,7 +64,7 @@ To allows for 2 instaces of vendor (testing & production), we have to use custom
 ```json
  "config": {
     "prepend-autoloader": true,
-    "autoloader-suffix": "ache_plugin_dev"
+    "autoloader-suffix": "##DEV_AUTLOADER_PREFIX##"
 }
 ```
 ### scoper.inc.php
@@ -69,7 +74,7 @@ You will need to set your prefix for all namespaces in here, you can add in cust
 ```php
 return array(
 // Set your namespace prefix here
-    'prefix' => 'PcLocations_001',
+    'prefix' => ##SCOPER_PREFIX##,
     .....
 );
 ```
@@ -80,7 +85,7 @@ return array(
     'whitelist' => array(
         'PHPUnit\Framework\*',
         'Composer\Autoload\ClassLoader',
-        'Your\Plugins\Code\*', <- Your namespaces here
+        '##NAMESPACE##\*', <- Your namespaces here
     ),
     .....
 );
@@ -100,7 +105,7 @@ You can also add in your extra functions/classes/traits/interfaces/constants to 
 ### build.sh
 This is the main bash file used to create your build, the autoloader-suffix above will need to be changed inside the build.sh file. You will reference to it twice, just update both.
 ```bash
-composer config autoloader-suffix pc_plugin_bp_dev
+composer config autoloader-suffix ##DEV_AUTLOADER_PREFIX##
 ```
 Inside this file, you can set the build dir to be else where and generally make a few changes to how it builds. Also feel free to add in any NODE commands for building CSS & JS too.
 
@@ -110,14 +115,9 @@ This file holds all the phpstan rules. You will see there is an extra bootstrap 
     - %currentWorkingDirectory%/build/vendor/autoload.php
 ```
 
-### wp(dir)
-This directory holds all the plugin activation/deactivation hooks. They are excluded from the rest of the codebase due to where they are called (in plugin.php). You will need to set the namespaces based on your setting in composer.json and also ensure all use App statements are using the namespace esacped ones.
-
 ### config/settings.php
 These are the settings used by the **App_Config** and **Config** classes. You will need to add in additional settings for all your cpt, taxonomy and cache/rest namespaces. If you would like to have your assets or view directories else where, you can change the path and urls accordingly.
 
-### config/dependencies.php
-All commented out namepsaces will need replacing if you use php-scoper. For more information about how we use Dice for DI, please consult the main documentation.
 
 ### tests/wp-config.php
 As with wordpress, the tests wp-config.php will need to be created. 
@@ -139,10 +139,10 @@ This will first run a development build of your plugin, it will compile all the 
 
 ```$ bash build.sh --dev```
 
-Runs the same process as above, but will rerun composer install for all your dev dependencies (in the root vendor dir). This will allow you to run all the test suites as your are developing and should be used in all workflows for github. One thing to note, when doing this you will find your IDE will suggest 2 versions of some classes to use. Always choose the one whic has been escaped with your custom namespace.
+Runs the same process as above, but will rerun composer install for all your dev dependencies (in the root vendor dir). This will allow you to run all the test suites as your are developing and should be used in all workflows for github. One thing to note, when doing this you will find your IDE will suggest 2 versions of some classes to use. Always choose the one which has been prefixed with your custom namespace.
 ```php 
 
-use My_Ache_Plugin\PinkCrab\Application\App; <-- choose me
+use Achme_Plugin\PinkCrab\Application\App; <-- choose me
 - or
 use PinkCrab\Application\App;
 ```

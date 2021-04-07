@@ -11,5 +11,4 @@ declare(strict_types=1);
  */
 
 return array(
-	/** Include all your classes which implemenet Registerable here */
 );

@@ -78,7 +78,6 @@ return array(
 		'PHPUnit\Framework\*',
 		'Composer\Autoload\ClassLoader',
 		'##NAMESPACE##\*',
-		'##NAMESPACE_WP##\*',
 	),
 	'whitelist-global-constants' => true,
 	'whitelist-global-classes'   => true,

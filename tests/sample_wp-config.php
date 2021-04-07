@@ -30,8 +30,11 @@ define( 'WP_DEBUG', true );
 // WARNING WARNING WARNING!
 // These tests will DROP ALL TABLES in the database with the prefix named below.
 // DO NOT use a production database or one that is shared with something else.
+
+// These GitHub action MYSQL credentials are set in the actions yaml file
+// If you wish to change them, ensure you change them in both places
 if ( getenv( 'environment_github' ) ) {
-	define( 'DB_NAME', 'pc_core_tests' );
+	define( 'DB_NAME', 'pc_plugin_bp' );
 	define( 'DB_USER', 'root' );
 	define( 'DB_PASSWORD', 'crab' );
 	define( 'DB_HOST', '0.0.0.0' );

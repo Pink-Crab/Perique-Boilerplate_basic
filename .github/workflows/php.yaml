@@ -19,7 +19,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: 'crab'
-          MYSQL_DATABASE: pc_core_tests
+          MYSQL_DATABASE: pc_plugin_bp
         ports:
           - 3306:3306
         options: >-

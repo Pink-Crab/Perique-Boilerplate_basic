@@ -13,7 +13,7 @@ $parch_dispatcher = new Patcher_Dispatcher( __DIR__ . '/patchers' );
 
 return array(
 	// Set your namespace prefix here
-	'prefix'                     => 'PC_Headless_Blog_1AA',
+	'prefix'                     => '##SCOPER_PREFIX##',
 	'finders'                    => array(
 		Finder::create()
 			->files()

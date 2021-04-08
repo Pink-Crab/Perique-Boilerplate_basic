@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Extracts all Class, Function and Constants values from a defined stub file.
+ *
+ * File taken from pxlrbt's PHP-Scoper toolset.
+ *
+ * @source https://github.com/pxlrbt/php-scoper-prefix-remover
+ */
 
 namespace pxlrbt\PhpScoper\PrefixRemover;
 

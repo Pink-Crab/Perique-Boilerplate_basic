@@ -10,13 +10,13 @@ fi
 # Install dev dependencies
 echo "Installing dev dependencies"
 rm -rf vendor
-composer config autoloader-suffix ##DEV_AUTLOADER_PREFIX##
+composer config autoloader-suffix pc_headless_blog
 composer config prepend-autoloader true
 composer install 
 
 # Build all scoper patchers
 echo "Building scope patchers"
-php build-tools/run.php
+php build-tools/create_patchers.php
 
 # Run production build
 echo "Building production"
@@ -27,17 +27,20 @@ composer clear-cache
 composer install --no-dev
 
 echo "Running php-scoper"
-php build-tools/scoper.phar add-prefix --output-dir=build --force scoper.inc.php
+php build-tools/scoper.phar add-prefix --output-dir=build --force --config=build-tools/scoper.inc.php
 
 # Reset autoloader pefix & dump the autoloader to the new build path.
 echo "Reset prefix for dev & rebuild autoloader in build"
-composer config autoloader-suffix ##DEV_AUTLOADER_PREFIX##
+composer config autoloader-suffix pc_headless_blog
 composer dump-autoload --working-dir build --classmap-authoritative
 
 if [ $instal_dev = "--dev" ]
 then
     echo "Rebuilding dev dependencies"
     composer install 
+    echo "Rebuilt all dev dependencies"
 fi
+
+echo "Finished!!"
 
 

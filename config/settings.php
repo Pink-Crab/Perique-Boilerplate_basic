@@ -28,6 +28,10 @@ return array(
 		'assets'         => $base_path . '/assets',
 		'upload_root'    => $wp_uploads['basedir'],
 		'upload_current' => $wp_uploads['path'],
+
+		// Include custom
+		// 'foo' => 'some/path',
+		// Will allow Config::path('foo') === 'some/path'
 	),
 	'url'        => array(
 		'plugin'         => \plugins_url( $plugin_dir ),
@@ -35,20 +39,34 @@ return array(
 		'assets'         => \plugins_url( $plugin_dir ) . '/assets',
 		'upload_root'    => $wp_uploads['baseurl'],
 		'upload_current' => $wp_uploads['url'],
+
+		// Include custom
+		// 'bar' => 'some/url',
+		// Will allow Config::url('bar') === 'some/path'
 	),
 	'post_types' => array(
-		// 'your_key' => array(   // use with Config::post_types('your_key')
-		// 	'slug' => 'cpt_slug',
-		// 	'meta' => array(
-		// 		'your_key'  => 'meta_key',
-		// 	),
-		// ),
+		// Use this to prefix your cpt types
+		// 'events' => 'pinkcrab_event',
+		// Will allow Config::post_types('events') === 'pinkcrab_event'
 	),
 	'taxonomies' => array(
-		// 'your_key' => array( // use with Config::taxonomies('your_key')
-		// 	'slug' => 'tax_slug',
-		// 	'term' => array(),
-		// ),
+		// Use this to prefix your taxonomies
+		// 'location' => 'pinkcrab_location',
+		// Will allow Config::taxonomies('location') === 'pinkcrab_location'
+	),
+	'meta'       => array(
+		'post' => array(
+			// 'key_1' => 'pinkcrab_post_meta_key_1',
+			// Will allow Config::post_meta('key_1') === 'pinkcrab_post_meta_key_1'
+		),
+		'user' => array(
+			// 'key_1' => 'pinkcrab_user_meta_key_1',
+			// Will allow Config::user_meta('key_1') === 'pinkcrab_user_meta_key_1'
+		),
+		'term' => array(
+			// 'key_1' => 'pinkcrab_term_meta_key_1',
+			// Will allow Config::term_meta('key_1') === 'pinkcrab_term_meta_key_1'
+		),
 	),
 	'plugin'     => array(
 		'version' => is_array( $plugin_data ) && array_key_exists( 'Version', $plugin_data )

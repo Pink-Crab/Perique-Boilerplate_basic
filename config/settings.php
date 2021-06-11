@@ -13,7 +13,6 @@ $plugin_dir = \basename( $base_path );
 
 // Useful WP helpers
 $wp_uploads = \wp_upload_dir();
-global $wpdb;
 
 // Include the plugins file for access plugin details before init.
 if ( ! function_exists( 'get_plugin_data' ) ) {
@@ -68,9 +67,13 @@ return array(
 			// Will allow Config::term_meta('key_1') === 'pinkcrab_term_meta_key_1'
 		),
 	),
+	'db_tables'  => array(
+		// 'db' => $GLOBALS['wpdb']->prefix . 'db_table',
+		// Will allow Config::db_tables('db') === 'wp_db_table'
+	),
 	'plugin'     => array(
 		'version' => is_array( $plugin_data ) && array_key_exists( 'Version', $plugin_data )
-			? $plugin_data['Version'] : '0.1.0',
+			? $plugin_data['Version'] : '0.1.0', // <- fallback version 
 	),
 	'namespaces' => array(
 		'rest'  => 'pinkcrab/boilerplate',

@@ -82,7 +82,7 @@ This Boilerplate is faily agnostic where and how you structure your code. Out of
 
 ## Additional Docs
 
-You can find out more information about the Plugin Framework on its own [repo](https://github.com/Pink-Crab/Plugin-Framework) or by visiting the [gitbook docs](https://glynn-quelch.gitbook.io/pinkcrab/).
+You can find out more information about the Plugin Framework on its own [repo](https://github.com/Pink-Crab/Perqiue-Framework) or by visiting the [gitbook docs](https://glynn-quelch.gitbook.io/pinkcrab/).
 
 ## Contributions
 

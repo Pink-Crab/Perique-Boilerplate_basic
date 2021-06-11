@@ -1,7 +1,7 @@
-# PinkCrab Plugin Boilerplate *V0.4* #
+# PinkCrab Perique Boilerplate *V1.0.0 #
 
 
-Welcome to the PinkCrab Plugin Boilerplate. The PinkCrab Plugin Framework give you all the basic tools needed to make a MVC style plugins for WordPress. Comes with a DI Container (DICE), custom Hook Loader and extendable registration process for interacting with WP apis.
+Welcome to the Perique Boilerplate. The Perique Framework give you all the basic tools needed to make a MVC style plugins for WordPress. Comes with a DI Container (DICE), custom Hook Loader and extendable registration process for interacting with WP apis.
 
 ## Setup
 
@@ -14,7 +14,7 @@ These are the placeholders currently in place that will need changing before run
 
 | Placeholder | Description | Files |
 | --- | ----------- | --- |
-| ##PACKAGE_NAME## | Should be in valid composer format *achme/my-plugin*  | composer.json |
+| ##PACKAGE_NAME## | Should be in valid composer format *achme/my-plugin*  | composer.json & settings.php |
 | ##DESCRIPTION## | This is your plugins description  | composer.json & plugin.php |
 | ##YOUR URL##  | Replace with your own homepage or github profile  | composer.json & plugin.php |
 | ##AUTHOR## | The name of the primary developer, you can add more authors if you wish to composer.json | composer.json & plugin.php |
@@ -33,11 +33,11 @@ These are the placeholders currently in place that will need changing before run
 
 ## Packages
 
-The PinkCrab Plugin Framework allows the use of composer packages, which can be added as normal. However care should be take to ensure that you only add dependencies if you have 100% control over the codebase. You might be using the latest and greatest version of a package and another plugin uses a older version. Before you know it you have some fun and games with dependency conflicts. We used to package a full build suite using PHP Scoper to rename package namespaces, but we have removed it from this basic boilerplate.
+Perique allows the use of composer packages, which can be added as normal. However care should be take to ensure that you only add dependencies if you have 100% control over the codebase. You might be using the latest and greatest version of a package and another plugin uses a older version. Before you know it you have some fun and games with dependency conflicts. We used to package a full build suite using PHP-Scoper to rename package namespaces, but we have removed it from this basic boilerplate.
 
 ## Tests
 
-Out of the box, this boilerplate comes with PHPUnit, PHPStan and PHPCS. All 3 are come with prepopulated config files, allow you to hit the ground running. If you look into the composer.json file you will find we have a selection of commands you can run.
+Out of the box, this boilerplate comes with PHPUnit, PHPStan and PHPCS. All 3 are come with pre-populated config files, allow you to hit the ground running. If you look into the composer.json file you will find we have a selection of commands you can run.
 
 * **composer test** This will run phpunit on its own, generating the coverage report and giving the testdox output
 * **composer coverage** This will run phpunit and generate a full HTML report of coverage in ```/coverage-report```
@@ -45,7 +45,7 @@ Out of the box, this boilerplate comes with PHPUnit, PHPStan and PHPCS. All 3 ar
 * **composer sniff** This run the the code found in /src through PHPCS using the ruleset defined in phpcs.xml
 * **composer all** This will composer test then composer analyse and finally composer sniff. 
 
-~ To use the WooCommerce and ACF stubs, please remvoe the # from ```phpstan.neon.dist``` 
+~ To use the WooCommerce and ACF stubs, please remove the # from ```phpstan.neon.dist``` 
 
 ## GitHub Actions
 
@@ -67,13 +67,13 @@ This Boilerplate is faily agnostic where and how you structure your code. Out of
 | /tests             # Holds all PHPUnit and WP_Unit config files and tests themselves.
 | /views             # Holds all template files
 | composer.json      # The composer configuration file.
-| phpcs.xml          # Defines the ruleset and custom rules for PHP-CS
+| phpcs.xml          # Defines the rule set and custom rules for PHP-CS
 | phpstan.neon.dist  # PHPStan definitions and stub declarations.
 | phpunit.xml.dist   # WP & PHPUnit configurations.
 | plugin.php         # The WP Plugin definition and app bootstrapping.
 | README.md          # You are here!
 
-# Optional artifacts, all included in gitignore and gernated for/during testing.
+# Optional artifacts, all included in gitignore and generated for/during testing.
 | /coverage-report   # The generated Coverage Report in HTML format.
 | /wordpress         # The test instance of WP used for WPUnit tests
 | /vendor            # Composer directory, should be uploaded with your code, but not needed in repo
@@ -86,4 +86,4 @@ You can find out more information about the Plugin Framework on its own [repo](h
 
 ## Contributions
 
-If you would like to contribute to the PinkCrab Plugin Framework and/or any of its packages, please feel to reach out at glynn@pinkcrab.co.uk or generate an issue/pr over on github. This package is manually updated everytime we make substantial changes to the Core package.
+If you would like to contribute to the Perique Framework and/or any of its packages, please feel to reach out at glynn@pinkcrab.co.uk or generate an issue/pr over on github. This package is manually updated every time we make substantial changes to the Core package.

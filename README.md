@@ -1,4 +1,4 @@
-# PinkCrab Perique Boilerplate *V1.0.0 #
+# PinkCrab Perique Boilerplate V1.0.0 #
 
 
 Welcome to the Perique Boilerplate. The Perique Framework give you all the basic tools needed to make a MVC style plugins for WordPress. Comes with a DI Container (DICE), custom Hook Loader and extendable registration process for interacting with WP apis.
@@ -57,7 +57,7 @@ As mentioned the Boilerplate comes with WPUnit included and will install a versi
 
 ## File Structure
 
-This Boilerplate is faily agnostic where and how you structure your code. Out of the box, this Boilerplate is set up with the following assumptions
+This Boilerplate is fairly agnostic where and how you structure your code. Out of the box, this Boilerplate is set up with the following assumptions
 
 ```bash
 | /.github           # Holds the github actions files, should not be moved!

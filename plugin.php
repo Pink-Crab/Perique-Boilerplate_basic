@@ -13,12 +13,10 @@
  * TextDomain:      ##TEXT DOMAIN##
  */
 
-use PinkCrab\Core\Application\App_Factory;
-
 require_once __DIR__ . '/vendor/autoload.php';
 
-( new App_Factory() )->with_wp_dice( true )
+$app = ( new PinkCrab\Perique\Application\App_Factory() )->with_wp_dice( true )
 	->di_rules( require __DIR__ . '/config/dependencies.php' )
 	->app_config( require __DIR__ . '/config/settings.php' )
-	->registration_classses( require __DIR__ . '/config/registration.php' )
+	->registration_classes( require __DIR__ . '/config/registration.php' )
 	->boot();

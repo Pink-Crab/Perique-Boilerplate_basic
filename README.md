@@ -1,6 +1,6 @@
-# PinkCrab Plugin Boilerplate || Seed Build 0.4.0 #
+# PinkCrab Perique Boilerplate || Seed Build 1.0.0 #
 
-[Built from release 0.4.0](https://github.com/Pink-Crab/Framework_Plugin_Boilerplate/releases/tag/0.4.0) of the BoilerPlate.
+[Built from release 1.0.0](https://github.com/Pink-Crab/Perique-Boilerplate_basic/releases/tag/1.0.0) of the BoilerPlate.
 
 > PLEASE ENSURE YOU READ THE FULL DOCUMENTATION BEFORE USING THIS BUILD
 

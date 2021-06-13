@@ -10,7 +10,7 @@ fi
 # Install dev dependencies
 echo "Installing dev dependencies"
 rm -rf vendor
-composer config autoloader-suffix pc_headless_blog
+composer config autoloader-suffix ##DEV_AUTLOADER_PREFIX##
 composer config prepend-autoloader true
 composer install 
 
@@ -31,7 +31,7 @@ php build-tools/scoper.phar add-prefix --output-dir=build --force --config=build
 
 # Reset autoloader pefix & dump the autoloader to the new build path.
 echo "Reset prefix for dev & rebuild autoloader in build"
-composer config autoloader-suffix pc_headless_blog
+composer config autoloader-suffix ##DEV_AUTLOADER_PREFIX##
 composer dump-autoload --working-dir build --classmap-authoritative
 
 if [ $instal_dev = "--dev" ]

@@ -22,7 +22,7 @@ Before you can run the customer build process, you will need to replace all plac
 | ##AUTHOR_NAME##      | The plugin authors name   |
 | ##AUTHOR_URL##      | The plugin authors website*  |
 | ##AUTHOR_EMAIL##      | The plugin authors email*  |
-| ##NAMESPACE##      | The plugins namespapce (used in composer.json, so ensure you use **\\\\** )    |
+| ##NAMESPACE##      | The plugins namespace (used in composer.json, so ensure you use **\\\\** )    |
 | ##SCOPER_PREFIX##      | The custom prefix used on all namespaces found in *vendor*.     |
 | ##PACKAGE_NAME##      | The package name used in composer.json (**achme/plugin-x**)    |
 | ##DEV_AUTLOADER_PREFIX##      | The custom autoloader prefix for dev dependencies (must be valid php namespace like **achme_plugin_x_dev** )   |

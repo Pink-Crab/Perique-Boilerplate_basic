@@ -27,6 +27,7 @@ composer clear-cache
 composer install --no-dev
 
 echo "Running php-scoper"
+mkdir -p build
 php build-tools/scoper.phar add-prefix --output-dir=build --force --config=build-tools/scoper.inc.php
 
 # Reset autoloader pefix & dump the autoloader to the new build path.

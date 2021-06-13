@@ -33,8 +33,11 @@
         "wp-coding-standards/wpcs": "*",
         "object-calisthenics/phpcs-calisthenics-rules": "*",
         "jetbrains/phpstorm-stubs": "dev-master",
+        "humbug/php-scoper": "^0.14.0",
+        "bamarni/composer-bin-plugin": "^1.4",
         "kimhf/woocommerce-stubs": "^0.2.0",
-        "kimhf/advanced-custom-fields-pro-stubs": "^5.9"
+        "kimhf/advanced-custom-fields-pro-stubs": "^5.9",
+        "pxlrbt/php-scoper-prefix-remover": "^0.1.0"
     },
     "require": {
         "php": ">=7.1.0",
@@ -45,7 +48,10 @@
         "coverage": "./vendor/bin/phpunit --coverage-html coverage-report --testdox",
         "analyse": "./vendor/bin/phpstan analyse src -l8",
         "sniff": "./vendor/bin/phpcs src/ -v",
-        "all": "composer test && composer analyse && composer sniff"
+        "all": "composer test && composer analyse && composer sniff",
+        "build": "bash build.sh",
+        "build-dev": "bash build.sh --dev",
+        "build-dump": "composer dump-autoload --working-dir build --classmap-authoritative"
     },
     "prefer-stable": true,
     "config": {

@@ -107,6 +107,17 @@ composer config autoloader-suffix ##DEV_AUTLOADER_PREFIX##
 ```
 Inside this file, you can set the build dir to be else where and generally make a few changes to how it builds. Also feel free to add in any NODE commands for building CSS & JS too.
 
+We have added `$ composer build` (production only) and `$ composer build-dev`. These should be used in place of 
+* `composer install` or `composer update` (use `composer build-dev`)
+* `composer install --no-dev` or `composer update --no-dev` (use `composer build`)  
+> *Please note these do not follow the naming structure of native composer commands*  
+
+These should be run after adding new dependency. NEVER RUN composer update or composer install directly (ONLY)
+
+### Caveat with Scoper Build
+This is not a perfect solution, you might find some dependency functionality causes problems. This can be caused by `function_exists('function_name)`, while you can use the `function_pollyfils.php` file, you can still hit problems with Functions wordpress calls in on JIT includes on when used (especially in wp-admin). 
+As we use a customer prefixed autoloader, there are some times when we class can be found. When this happens you will need to dump the autoloader, to make this easier, we have a custom command `$ composer dump` which will explicitly dump the prefixed version.
+
 ## Tests
 
 ### config/settings.php

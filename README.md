@@ -1,51 +1,117 @@
-# PinkCrab Perique Boilerplate V1.0.0 #
+# PinkCrab Plugin Boilerplate || Seed Build 0.4.0 #
 
+[Built from release 0.4.0](https://github.com/Pink-Crab/Framework_Plugin_Boilerplate/releases/tag/0.4.0) of the BoilerPlate.
+
+> PLEASE ENSURE YOU READ THE FULL DOCUMENTATION BEFORE USING THIS BUILD
+
+Unlike the regular release version of this Plugin Boilerplate, the *Seed Build* is geared up for using **PHP-Scoper**. A basic WordPress configuration and custom patcher provider is included. This prevents the prefixing of WordPress (plus WooCommerce and ACF) functions/classes/constants within the scoped dependencies. Its not perfect sadly, but close enough to be easily workable.
 
 Welcome to the Perique Boilerplate. The Perique Framework give you all the basic tools needed to make a MVC style plugins for WordPress. Comes with a DI Container (DICE), custom Hook Loader and extendable registration process for interacting with WP apis.
 
-## Setup
+Before you can run the customer build process, you will need to replace all placeholders which are used throughout the plugins files. You should be able to use find and replace to do this pretty easily.
 
-Just clone this repo into your wp-content/plugins directory, remove the .git folder and replace the placeholders found in composer.json, config/settings and the plugin.php file. Once they have been setup, its just a case of running ```composer install``` or ```composer install --no-dev``` once you are ready to release your code.
+**THESE ARE ALL REQUIRED**
 
-### Placeholders
+| Placeholder      | Description |
+| ----------- | ----------- |
+| ##PLUGIN_NAME##      | The name of your plugin, used in plugin.php and composer.json    |
+| ##PLUGIN_URL##      | URL to the plugin website or repo*    |
+| ##PLUGIN_DESCRIPTION##      | The plugins description   |
+| ##PLUGIN_VERSION##      | The plugins current/initial version number   |
+| ##PLUGIN_TEXTDOMAIN##      | The plugins textdomain   |
+| ##AUTHOR_NAME##      | The plugin authors name   |
+| ##AUTHOR_URL##      | The plugin authors website*  |
+| ##AUTHOR_EMAIL##      | The plugin authors email*  |
+| ##NAMESPACE##      | The plugins namespapce (used in composer.json, so ensure you use **\\\\** )    |
+| ##SCOPER_PREFIX##      | The custom prefix used on all namespaces found in *vendor*.     |
+| ##PACKAGE_NAME##      | The package name used in composer.json (**achme/plugin-x**)    |
+| ##DEV_AUTLOADER_PREFIX##      | The custom autoloader prefix for dev dependencies (must be valid php namespace like **achme_plugin_x_dev** )   |
 
-These are the placeholders currently in place that will need changing before running composer install
+***
+
+> \* Composer validates email and urls, so ensure only valid email and url formats are used. 
 
 
-| Placeholder | Description | Files |
-| --- | ----------- | --- |
-| ##PACKAGE_NAME## | Should be in valid composer format *achme/my-plugin*  | composer.json & settings.php |
-| ##DESCRIPTION## | This is your plugins description  | composer.json & plugin.php |
-| ##YOUR URL##  | Replace with your own homepage or github profile  | composer.json & plugin.php |
-| ##AUTHOR## | The name of the primary developer, you can add more authors if you wish to composer.json | composer.json & plugin.php |
-| ##YOUR EMAIL## | Contact email for the main developer  | composer.json |
-| ##NAMESPACE## | The namespace used by composers autoloader, remeber to use \\\\ 👍  | composer.json |
-| ##PLUGIN NAME## | PLugin name for WordPress  | plugin.php |
-| ##VERSION## | The current plugin version, this is reflected in App_Config::class  | plugin.php |
-| ##TEXT DOMAIN## | WordPress TextDomain  | plugin.php |
-| ##DB_NAME## | Test Database name  | test/wp-config.php |
-| ##DB_USER## | Test Database user  | test/wp-config.php |
-| ##DB_PASSWORD## | Test Database users password  | test/wp-config.php |
-| ##DB_HOST## | Test Database host  | test/wp-config.php |
+The app is bootstrapped from here and both the function_pollyfills.php and scoped vendors, autoloader are included. 
 
 
 **Please note the /tests directory assumes your namespace will be My\\Namespace\\Tests**
 
-## Packages
+In the initial file produced, we have included esc_attr as this is used in one of our libs. If you wanted to check what functions might be affected, see scoper-autoload.php after running build. You will need to search for the functions inside your build/vendor directory to see if they exist, in your final code.
 
-Perique allows the use of composer packages, which can be added as normal. However care should be take to ensure that you only add dependencies if you have 100% control over the codebase. You might be using the latest and greatest version of a package and another plugin uses a older version. Before you know it you have some fun and games with dependency conflicts. We used to package a full build suite using PHP-Scoper to rename package namespaces, but we have removed it from this basic boilerplate.
+### composer.json
+This is mostly as you would expect, with the one caveat where if you are using php-scoper (you should!!!!), you will need to set your local paths to reflect vendor no longer being in the root dir. 
+```json
+"autoload": {
+    "psr-4": {
+        "##NAMESPACE##": "src",
+    },
+    "files": []
+},
+```
+Becomes
+```json
+"autoload": {
+    "psr-4": {
+        "##NAMESPACE##": "../src",
+    },
+    "files": []
+},
+```
+To allows for 2 instances of vendor (testing & production), we have to use custom **autoloader-suffix**. These are only used on the development version of vendor and should be set to reflect the project. If you are only ever going to have 1 plugin using this framework in your dev sandbox, you can leave it as it is.
+```json
+ "config": {
+    "prepend-autoloader": true,
+    "autoloader-suffix": "##DEV_AUTLOADER_PREFIX##"
+}
+```
+### scoper.inc.php
+This is the main settings file for the scoping process, you will a function called **$patcherProvider()**. This is where we call the patchers created during build. If you have changed the path in *build-tools/run.php*, ensure you change them in here too. 
+
+You will need to set your prefix for all namespaces in here, you can add in custom functions too. 
+```php
+return array(
+// Set your namespace prefix here
+    'prefix' => ##SCOPER_PREFIX##,
+    .....
+);
+```
+You will also need to set all the namespaces for your plugin (as defined in whitelist settings.)
+```php
+return array(
+    .....
+    'whitelist' => array(
+        'PHPUnit\Framework\*',
+        'Composer\Autoload\ClassLoader',
+        '##NAMESPACE##\*', <- Your namespaces here
+    ),
+    .....
+);
+```
+You can also add in your extra functions/classes/traits/interfaces/constants to the *patchers* list.
+```php
+'patchers' => array(
+    function ( $filePath, $prefix, $contents ) use ( $patcherProvider ) {
+        ....
+        // Add in any additional symbols to not prefix.
+        $contents = str_replace( "\\$prefix\\my_global_function", '\\my_global_function', $contents );
+        return $contents;
+    },
+),
+```
+
+### build.sh
+This is the main bash file used to create your build, the autoloader-suffix above will need to be changed inside the build.sh file. You will reference to it twice, just update both.
+```bash
+composer config autoloader-suffix ##DEV_AUTLOADER_PREFIX##
+```
+Inside this file, you can set the build dir to be else where and generally make a few changes to how it builds. Also feel free to add in any NODE commands for building CSS & JS too.
 
 ## Tests
 
-Out of the box, this boilerplate comes with PHPUnit, PHPStan and PHPCS. All 3 are come with pre-populated config files, allow you to hit the ground running. If you look into the composer.json file you will find we have a selection of commands you can run.
+### config/settings.php
+These are the settings used by the **App_Config** and **Config** classes. You will need to add in additional settings for all your cpt, taxonomy and cache/rest namespaces. If you would like to have your assets or view directories else where, you can change the path and urls accordingly.
 
-* **composer test** This will run phpunit on its own, generating the coverage report and giving the testdox output
-* **composer coverage** This will run phpunit and generate a full HTML report of coverage in ```/coverage-report```
-* **composer analyse** This will run PHPStan at lv8 over all code in the src/ directory. Package includes WordPress Core, WooCommerce and ACF stubs~
-* **composer sniff** This run the the code found in /src through PHPCS using the ruleset defined in phpcs.xml
-* **composer all** This will composer test then composer analyse and finally composer sniff. 
-
-~ To use the WooCommerce and ACF stubs, please remove the # from ```phpstan.neon.dist``` 
 
 ## GitHub Actions
 
@@ -82,8 +148,12 @@ This Boilerplate is fairly agnostic where and how you structure your code. Out o
 
 ## Additional Docs
 
-You can find out more information about the Plugin Framework on its own [repo](https://github.com/Pink-Crab/Perqiue-Framework) or by visiting the [gitbook docs](https://glynn-quelch.gitbook.io/pinkcrab/).
+Runs the same process as above, but will rerun composer install for all your dev dependencies (in the root vendor dir). This will allow you to run all the test suites as your are developing and should be used in all workflows for github. One thing to note, when doing this you will find your IDE will suggest 2 versions of some classes to use. Always choose the one which has been prefixed with your custom namespace.
+```php 
 
-## Contributions
+use Achme_Plugin\PinkCrab\Application\App; <-- choose me
+- or
+use PinkCrab\Application\App;
+```
 
 If you would like to contribute to the Perique Framework and/or any of its packages, please feel to reach out at glynn@pinkcrab.co.uk or generate an issue/pr over on github. This package is manually updated every time we make substantial changes to the Core package.

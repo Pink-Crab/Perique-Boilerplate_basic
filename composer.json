@@ -1,25 +1,24 @@
 {
     "name": "##PACKAGE_NAME##",
     "type": "library",
-    "description": "##DESCRIPTION##",
+    "description": "##PLUGIN_DESCRIPTION##",
     "keywords": [],
-    "homepage": "##YOUR URL##",
+    "homepage": "##PLUGIN_URL##",
     "license": "MIT",
     "authors": [{
-        "name": "##AUTHOR##",
-        "email": "##YOUR EMAIL##",
-        "homepage": "##YOUR URL##",
-        "role": "Developer"
+        "name": "##AUTHOR_NAME##",
+        "email": "##AUTHOR_EMAIL##",
+        "homepage": "##AUTHOR_URL##"
     }],
     "autoload": {
         "psr-4": {
-            "##NAMESPACE##\\": "src"
+            "##NAMESPACE##\\": "../src"
         },
         "files": []
     },
     "autoload-dev": {
         "psr-4": {
-            "##NAMESPACE##\\Tests\\": "tests"
+            "##NAMESPACE##\\Tests\\": "../tests"
         }
     },
     "require-dev": {
@@ -48,6 +47,9 @@
         "sniff": "./vendor/bin/phpcs src/ -v",
         "all": "composer test && composer analyse && composer sniff"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "prepend-autoloader": true,
+        "autoloader-suffix": "##DEV_AUTLOADER_PREFIX##"
+    }
 }

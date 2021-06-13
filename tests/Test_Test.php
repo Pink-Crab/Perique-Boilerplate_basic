@@ -3,12 +3,12 @@
 /**
  * Sample Test
  *
- * @package PinkCrab/Tests
+ * @package ##NAMESPACE##\Tests
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
-use WP_UnitTestCase;
-
-class Test_Test extends WP_UnitTestCase {
+class Test_Test extends \WP_UnitTestCase {
 
 	function test_wordpress_and_plugin_are_loaded() {
 		$this->assertTrue( function_exists( 'do_action' ) );

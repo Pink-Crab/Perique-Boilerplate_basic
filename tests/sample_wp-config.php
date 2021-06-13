@@ -30,15 +30,18 @@ define( 'WP_DEBUG', true );
 // WARNING WARNING WARNING!
 // These tests will DROP ALL TABLES in the database with the prefix named below.
 // DO NOT use a production database or one that is shared with something else.
+
+// These GitHub action MYSQL credentials are set in the actions yaml file
+// If you wish to change them, ensure you change them in both places
 if ( getenv( 'environment_github' ) ) {
-	define( 'DB_NAME', 'pc_core_tests' );
+	define( 'DB_NAME', 'pc_plugin_bp' );
 	define( 'DB_USER', 'root' );
 	define( 'DB_PASSWORD', 'crab' );
 	define( 'DB_HOST', '0.0.0.0' );
 	define( 'DB_CHARSET', 'utf8' );
 	define( 'DB_COLLATE', '' );
 } else {
-	// IF YOU ARE PLANNING TO RUN THESE TESTS, SET THESE TO MATCH YOUR DB.
+	// IF YOU ARE PLANNING TO RUN THESE TESTS LOCALLY, SET THESE TO MATCH YOUR DB.
 	define( 'DB_NAME', getenv( 'WP_DB_NAME' ) ?: '##DB_NAME##' );
 	define( 'DB_USER', getenv( 'WP_DB_USER' ) ?: '##DB_USER##' );
 	define( 'DB_PASSWORD', getenv( 'WP_DB_PASS' ) ?: '##DB_PASSWORD##' );

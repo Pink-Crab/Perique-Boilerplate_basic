@@ -5,6 +5,10 @@ declare(strict_types=1);
 /**
  * All custom rules for the DI Container.
  * See docs at https://app.gitbook.com/@glynn-quelch/s/pinkcrab/application/dependency-injection
+ *
+ * @package ##NAMESPACE##
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
 return array(

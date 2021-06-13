@@ -5,6 +5,10 @@ declare(strict_types=1);
 /**
  * Holds all custom app config values.
  * See docs at https://app.gitbook.com/@glynn-quelch/s/pinkcrab/application/app_config
+ *
+ * @package PinkCrab\Framework
+ * @author ##AUTHOR_NAME## ##AUTHOR_EMAIL##
+ * @since ##PLUGIN_VERSION##
  */
 
 // Base path and urls
@@ -13,6 +17,13 @@ $plugin_dir = \basename( $base_path );
 
 // Useful WP helpers
 $wp_uploads = \wp_upload_dir();
+global $wpdb;
+
+// Include the plugins file for access plugin details before init.
+if ( ! function_exists( 'get_plugin_data' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+$plugin_data = get_plugin_data( $base_path . '/plugin.php' );
 
 // Include the plugins file for access plugin details before init.
 if ( ! function_exists( 'get_plugin_data' ) ) {
@@ -73,11 +84,10 @@ return array(
 	),
 	'plugin'     => array(
 		'version' => is_array( $plugin_data ) && array_key_exists( 'Version', $plugin_data )
-			? $plugin_data['Version'] : '0.1.0', // <- fallback version 
+			? $plugin_data['Version'] : '##PLUGIN_VERSION##',
 	),
 	'namespaces' => array(
 		'rest'  => 'pinkcrab/boilerplate',
 		'cache' => 'pinkcrab_boilerplate',
 	),
 );
-

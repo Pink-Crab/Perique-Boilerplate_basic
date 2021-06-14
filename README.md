@@ -8,6 +8,17 @@ Unlike the regular release version of this Plugin Boilerplate, the *Seed Build* 
 
 Welcome to the Perique Boilerplate. The Perique Framework give you all the basic tools needed to make a MVC style plugins for WordPress. Comes with a DI Container (DICE), custom Hook Loader and extendable registration process for interacting with WP apis.
 
+## Automated Setup
+
+If you would like to use our automated setup, please run the following command in the directory you wish to build the boilerplate.
+> `$ wget https://bin.pinkcrab.co.uk/pinkcrab && pinkcrab`
+
+This should download the latest builder from our server and run it automatically. Once the script is run, you will be asked a serious of questions, please fill these in and a fully populated boilerplate will be created.
+
+> Rather than running composer install please run `$ composer build-dev` after adding in any dependencies you may need. Please read below for more details of how this works and unusual workflow.
+
+## Manual Setup
+
 Before you can run the customer build process, you will need to replace all placeholders which are used throughout the plugins files. You should be able to use find and replace to do this pretty easily.
 
 **THESE ARE ALL REQUIRED**
